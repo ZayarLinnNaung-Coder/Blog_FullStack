@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" (click)="navbarNav.classList.toggle('show')" data-bs-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" #navbarNav>
+      <ul class="navbar-nav">
+        <li class="nav-item"
+            *ngIf="authService.isAuthenticated()">
+          <a class="nav-link btn btn-primary text-white"
+             [routerLink]="'add-post'" routerLinkActive="active"
+             aria-current="page" href="#">Add Post</a>
+        </li>
+        <li class="nav-item"
+            *ngIf="authService.isAuthenticated()">
+          <a class="nav-link text-danger" (click)="authService.logout()">Logout</a>
+        </li>
+        <li class="nav-item"
+            *ngIf="!authService.isAuthenticated()">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'register'" aria-current="page">Register</a>
+        </li>
+        <li class="nav-item"
+            *ngIf="!authService.isAuthenticated()">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'login'">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
